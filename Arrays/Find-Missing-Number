@@ -67,5 +67,6 @@ void selection_sort(int *ptr, int size)
         swaps++;
       }
     }
+    
   }
 }
