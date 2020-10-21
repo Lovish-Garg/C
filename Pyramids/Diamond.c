@@ -44,4 +44,3 @@ int main(void)
     print -= 2;
   }
 }
-
