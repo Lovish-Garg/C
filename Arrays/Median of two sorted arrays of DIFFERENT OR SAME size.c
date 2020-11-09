@@ -1,3 +1,4 @@
+// user needs to provide array sorted 
 #include <stdio.h>
 
 int merge_sort_median(int arr1[], int arr2[], int n1, int n2);
