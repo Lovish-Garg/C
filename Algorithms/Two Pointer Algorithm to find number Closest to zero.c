@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_arr(int arr[], int n);
 int closestZero(int arr[], int n);
 void merge_sort(int arr[], int l, int r);
 void merge(int arr[], int mid, int l, int r);
@@ -119,13 +118,3 @@ void merge(int arr[], int mid, int l, int r)
 	}
 }
 
-void print_arr(int arr[], int n)
-{
-	printf("\nData:  ");
-	for (int i = 0; i < n; i++)
-		printf("%d ", arr[i]);
-
-	printf("\nIndex: ");
-	for (int i = 0; i < n; i++)
-		printf("%d ", i);
-}
