@@ -47,7 +47,7 @@ int pop(Stack *stack)
         return -1;
 
     
-    return stack->arr[stack->top--];// It means goto array and then decrement top
+    return stack->arr[stack->top--];// It means goto array and then return top value , then decrement top
 }
 
 int peek(Stack *q)// To see the topmost element
