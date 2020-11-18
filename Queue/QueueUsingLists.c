@@ -80,6 +80,18 @@ int rear(que *q)
     return q->rear->data;
 }
 
+void free_(que *q)
+{   
+    node *temp = q->front;
+
+    while (temp)
+    {
+        q->front = q->front->link;
+        free(temp);
+        temp = q->front;
+    }
+}
+
 int main(void)
 {
     que *q = create_que();
@@ -93,5 +105,6 @@ int main(void)
     deque(q); 
     printf("Queue Front : %d \n", front(q)); // here we can replace front function by "  q->front->data  "
     printf("Queue Rear : %d", rear(q)); // here we can replace rear function by "  q->rear->data  "
-    getchar();
+    full_que(q->front);
+    free_(q);
 }
