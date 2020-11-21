@@ -1,4 +1,3 @@
-// This program is C version of GFG problem Majority Element
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
