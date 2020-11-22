@@ -1,13 +1,11 @@
+// In this program I have remade a program of gfg in C but in gfg it was in C++.
 #include <stdio.h>
 #define NA -1
 
 void merge(int arr[], int arr2[], int n, int m);
 void moveToEnd(int *ptr, int size);
 
-/*
-Here not any parameter means it can take any parameter otherwise it could be initialise as void print_arr(int, int);
-*/
-void print_arr();
+void print_arr(int [], int);
 
 int main(void)
 {
@@ -27,7 +25,6 @@ int main(void)
     print_arr(mPlusN, m + n);
 
     printf("\n");
-
     return 0;
 }
 
@@ -47,14 +44,6 @@ void moveToEnd(int mPlusN[], int size)
         if (mPlusN[i] != NA) 
         { 
         mPlusN[j] = mPlusN[i]; 
-      
-      /*
-         if( i != j) , if this step isnot done then duplicates in array can be produced but ignoring this block will not produce any problem in final outut as the duplicates will be over-written. You can see the duplicates in After moving to end-> result.
-      */
-        if (i != j)
-        {
-            mPlusN[i] = NA;
-        }
 
         j--; 
     }
@@ -72,14 +61,13 @@ void merge(int mPlusN[], int N[], int n, int m)
         if ((i < (m + n) && mPlusN[i] <= N[j]) || (j == n))
         {
             mPlusN[k] = mPlusN[i];
-            k++;
             i++; 
         }
         else
         {
             mPlusN[k] = N[j];
-            k++;
             j++;
         }
+            k++;
     }
 }
