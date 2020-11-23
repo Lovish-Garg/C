@@ -60,8 +60,6 @@ int main()
     printf("\n\nArray after sorting->\n");
     print_arr(arr, n);
 
-    getchar();
-    getchar();
     return 0; 
 } 
 
