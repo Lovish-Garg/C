@@ -1,3 +1,4 @@
+// This program checks if sum of two numbers is equal to x
 #include <stdio.h>
 #include <stdbool.h>
 #define MAX 9999// because in question it was mentioned that max value of A[i] will be smaller tha 10 power 5

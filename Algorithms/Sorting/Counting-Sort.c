@@ -25,7 +25,6 @@ int main(void)
 	int max = get_max(arr, n);
 
 	counting_sort(arr, max, n);
-
 	return 0;
 }
 

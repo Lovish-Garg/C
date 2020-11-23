@@ -1,12 +1,17 @@
 /*
   This is a tic-tac-toe game 
 */
+#ifdef _WIN32
+#define CLEAR cls
+
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE 9 // length of the array 
 
 // functions
-void board(void);
+void board(char const *clear);
 int check_win();
 
 // array for keeping record 
@@ -17,12 +22,19 @@ char mark;
 
 int main(void)
 {
+	char const *clear = NULL;
+	#ifdef _WIN32
+	clear  = "cls";
 
+	#elif linux
+	clear = "clear";
+
+	#endif
   int player = 1, i = 1, choice;
 
   do
   {
-    board();
+    board(clear);
 
     /*
      here I'm assigning player a number as it has value of 1 so 1 % 2 == 1
@@ -73,7 +85,7 @@ int main(void)
         while (getchar() != '\n');
 
         // so to pause the screen otherwise the system("clear") will clear the console
-        char t = getchar();
+        getchar();
 
         // as you can see before while condition below player is incrementing but I want that user hasnot properly input the value so I want the user to reinput that value.
         player--;
@@ -84,7 +96,7 @@ int main(void)
   }
   while (i == -1);
   // calling board funcction because if I don't do so the final result won't display to the user.
-  board();
+  board(clear);
 
   // check check_win function for this logic
   if (i == 1)
@@ -95,16 +107,17 @@ int main(void)
   {
     printf("\nGame =>darw\n");
   }
-
+  while (getchar() != '\n');
+  getchar();
   return 0;
 }
 
 // printing tic-tac-toe box with values 
-void board(void)
+void board(char const *clear)
 {
-  system("clear");
+  system(clear);
   printf("\tTic Tac Toe\n\n");
-  printf("Player 1 (X)  -  Player 2 (O)\n\n\n");
+  printf("Player 1 (O)  -  Player 2 (X)\n\n\n");
 
   printf("     |     |     \n  %c  |  %c  |  %c\n", arr[0], arr[1], arr[2]);
   printf("_____|_____|_____\n     |     |     \n");
