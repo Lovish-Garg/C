@@ -78,5 +78,5 @@ int get_median(int arr[], int n)
         return (arr[n / 2] + arr[n / 2 - 1]) / 2;
     }
     else
-        return arr[n / 2] / 2;   
+        return arr[n / 2];   
 }
