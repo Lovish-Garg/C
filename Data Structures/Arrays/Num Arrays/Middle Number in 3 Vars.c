@@ -1,4 +1,5 @@
-// This program is the C version of gfg problem and this program finds minimum and largest number in O(n) time complexity
+// This program is the C version of gfg problem Middle of Three
+
 #include <stdio.h>
 
 void swap(int *x, int *y)
