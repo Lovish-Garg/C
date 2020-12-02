@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 void isStrong(int);
 int Factorial(int);
