@@ -1,3 +1,6 @@
+/*
+    A Strong number is a number whose individual digits factorial is equal to number itself
+*/
 #include <stdio.h>
 
 void isStrong(int);
@@ -17,11 +20,11 @@ void isStrong(int num)
 {
     int factorial = 0, copy = num;
 
-    while (num)
+    while (num)// while (num != 0)
     {
         int rev = num % 10;
-        factorial += Factorial(rev);
-        num /= 10;
+        factorial += Factorial(rev);// getting factorial of the individual number
+        num /= 10;// removing the last digit of the number 
     }
 
     if (factorial == copy)
