@@ -33,7 +33,7 @@ int main(void)
 
     printf("\n  x  |");
 
-    for (int i = 1; i <= num - 1; i++)// printing the upper numbers n - 1 times because when last time priting number
+    for (int i = 1; i <= num - 1; i++)
         printf("  %d  |", i);
     printf("  %d  \n", num);
 
