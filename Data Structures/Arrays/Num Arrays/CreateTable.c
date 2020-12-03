@@ -21,6 +21,9 @@ void print_num(int num)
 
         case 3:
             printf(" %d |", copy);
+            break;
+        default: 
+            printf("%d |", copy);
     }
 }
 
@@ -33,7 +36,7 @@ int main(void)
 
     printf("\n  x  |");
 
-    for (int i = 1; i <= num - 1; i++)
+    for (int i = 1; i <= num - 1; i++)// printing the upper numbers n - 1 times because when last time priting number
         printf("  %d  |", i);
     printf("  %d  \n", num);
 
