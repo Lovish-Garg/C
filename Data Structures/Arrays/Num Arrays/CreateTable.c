@@ -28,12 +28,12 @@ int main(void)
 {
     int num;
 
-    printf("Number: ");
+    printf("Number: ");// taking input
     scanf("%d", &num);
 
     printf("\n  x  |");
 
-    for (int i = 1; i <= num - 1; i++)
+    for (int i = 1; i <= num - 1; i++)// printing the upper numbers n - 1 times because when last time priting number
         printf("  %d  |", i);
     printf("  %d  \n", num);
 
@@ -45,14 +45,15 @@ int main(void)
     for (int i = 1; i <= num; i++)
     {
         print_num(i);
-        for (int j = 1; j < UPTO; j++)
+        for (int j = 1; j <= UPTO; j++)
         {
             int product = i * j;
             print_num(product);
         }
-        printf("  %d\n", i * UPTO);
+        printf("\n");
     }
 
     for (int i = 0; i < num * 7; i++)
         printf("_");
+
 }
