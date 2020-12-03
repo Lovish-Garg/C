@@ -1,22 +1,58 @@
 #include <stdio.h>
+#define UPTO 10
+
+void print_num(int num)
+{
+    int copy = num, i = 0;
+    while (num)
+    {
+        num /= 10;
+        i++;
+    }
+
+    switch(i)
+    {
+        case 1:
+            printf("  %d  |", copy);
+            break;
+        case 2: 
+            printf(" %d  |", copy);
+            break;
+
+        case 3:
+            printf(" %d |", copy);
+    }
+}
 
 int main(void)
 {
     int num;
 
     printf("Number: ");
-    scanf("%d", &num);// taking input from user that of which table the table should be created
+    scanf("%d", &num);
 
-    int upto;// upto which number the table should be created
+    printf("\n  x  |");
 
-    printf("Upto Number: ");
-    scanf("%d", &upto);
+    for (int i = 1; i <= num - 1; i++)
+        printf("  %d  |", i);
+    printf("  %d  \n", num);
 
-    printf("\n");
-    for (int i = 0; i < upto; i++)
-    {
-        printf("%d * %d = %d\n", num, i, num * i);// printing actual number then i and then their product
-    }
+    for (int i = 0; i < num * 7; i++)
+        printf("_");
     
-    return 0;
+
+    printf("\n\n");
+    for (int i = 1; i <= num; i++)
+    {
+        print_num(i);
+        for (int j = 1; j < UPTO; j++)
+        {
+            int product = i * j;
+            print_num(product);
+        }
+        printf("  %d\n", i * UPTO);
+    }
+
+    for (int i = 0; i < num * 7; i++)
+        printf("_");
 }
