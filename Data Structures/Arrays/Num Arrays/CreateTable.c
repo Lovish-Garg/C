@@ -36,14 +36,15 @@ int main(void)
 
     printf("\n  x  |");
 
-    for (int i = 1; i <= num - 1; i++)// printing the upper numbers n - 1 times because when last time priting number
+    int limit = (num < UPTO) ? UPTO : num;
+    for (int i = 1; i <= limit - 1; i++)
         printf("  %d  |", i);
-    printf("  %d  \n", num);
+    printf("  %d  \n", UPTO);
 
-    for (int i = 0; i < num * 7; i++)
+    for (int i = 0; i < UPTO * 7; i++)
         printf("_");
     
-
+    
     printf("\n\n");
     for (int i = 1; i <= num; i++)
     {
@@ -56,7 +57,11 @@ int main(void)
         printf("\n");
     }
 
-    for (int i = 0; i < num * 7; i++)
+    for (int i = 0; i < UPTO * 7; i++)
         printf("_");
 
+    printf("\n");
+
+    getchar();
+    getchar();
 }
