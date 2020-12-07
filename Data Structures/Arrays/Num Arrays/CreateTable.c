@@ -61,5 +61,4 @@ int main(void)
         printf("_");
 
     printf("\n");
-    getch();
 }
