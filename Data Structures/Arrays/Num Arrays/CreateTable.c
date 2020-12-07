@@ -13,14 +13,14 @@ void print_num(int num)
     switch(i)
     {
         case 1:
-            printf("  %d  |", copy);
+            printf("%3d  |", copy);
             break;
         case 2: 
-            printf(" %d  |", copy);
+            printf(" %2d  |", copy);
             break;
 
         case 3:
-            printf(" %d |", copy);
+            printf(" %2d |", copy);
             break;
         default: 
             printf("%d |", copy);
@@ -61,4 +61,5 @@ int main(void)
         printf("_");
 
     printf("\n");
+    getch();
 }
