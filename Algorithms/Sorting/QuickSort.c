@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 void print_arr(int [], int);
 void quicksort(int [], int, int);
@@ -24,9 +23,10 @@ int main(void)
 		for (int i = 0; i < n; i++)
 			scanf("%d", &arr[i]);
 
-
+		printf("\nBefore Sorting->\n");
+		print_arr(arr, n);
 		quicksort(arr, 0, n - 1);
-		printf("\nAfter Sorting->\n");
+		printf("After Sorting->\n");
 		print_arr(arr, n);
 	}
 }
