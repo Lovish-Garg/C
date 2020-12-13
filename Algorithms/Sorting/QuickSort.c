@@ -71,7 +71,7 @@ void quicksort(int arr[], int l, int r)
 		int index  = partition(arr, l, r);
 
 		quicksort(arr, l, index - 1);
-		quicksort(arr, index, r);
+		quicksort(arr, index + 1, r);
 	}
 }
 
