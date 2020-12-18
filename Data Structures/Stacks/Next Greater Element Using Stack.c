@@ -96,7 +96,7 @@ void nextGreater(int arr[], int n)
 
 			while (popped < now)
 			{
-				printf("%d --- %d\n", popped, now);
+				printf("\n%d --- %d", popped, now);
 
 				if (isEmpty(&stack))
 					break;
@@ -115,6 +115,6 @@ void nextGreater(int arr[], int n)
     { 
         int popped = pop(&stack); 
         int  now = -1; 
-        printf("%d -- %d\n", popped, now); 
+        printf("\n%d -- %d", popped, now); 
     } 
 }
