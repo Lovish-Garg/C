@@ -101,17 +101,13 @@ int binary_search(int arr[], int start, int end, int num)
 		int mid = (start +  end) / 2;
 
 		if (arr[mid] == num)
-		{
 			return mid;
-		}
+		
 		else if(arr[mid] > num)
-		{
 			end = mid - 1;
-		}
+		
 		else
-		{
 			start = mid + 1;
-		}
 	}
 	return -1;
 }
