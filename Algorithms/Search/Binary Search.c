@@ -1,71 +1,115 @@
 #include <stdio.h>
 
+void merge_sort(int arr[], int, int);
+void merge(int arr[], int, int l, int r);
 int binary_search(int arr[], int start, int end, int num);
-void sort_arr(int *ptr, int n);
 
 int main(void)
 {
-	int n;
+    int t;
 
-	printf("\nInput the size of the array: ");
-	scanf("%d", &n);
+    printf("Testcases: ");
+    scanf("%d", &t);
 
-	int arr[n];
+    while (t--)
+    {
+        int n;
 
-	for (int i = 0; i < n; i++)
-	{
-		printf("Input data for %d elemnet: ", i);
-		scanf("%d", &arr[i]);
-	}
+        printf("\nNumber of Elements: ");
+        scanf("%d", &n);
 
-	sort_arr(arr, n); // here I'm using selection-sort alogorithm
+        int arr[n];
 
-	printf("After sorting-> ");
+        printf("\nInput data in array->\n");
+        for (int i = 0; i < n; i++)
+            scanf("%d", &arr[i]);
 
-	for (int i = 0; i < n; i++)
-	{
-		printf("%d ", arr[i]);
-	}
+        merge_sort(arr, 0, n - 1); // here I'm using merge-sort alogorithm
 
-	int num;
+        printf("\nAfter sorting-> ");
 
-	printf("\nInput the number to be searched: ");
-	scanf("%d", &num);
+        for (int i = 0; i < n; i++)
+        {
+            printf("%d ", arr[i]);
+        }
 
-	int index = binary_search(arr, 0, n - 1, num);
+        int num;
 
-	if (index == -1) // number ddoesnot exist
-	{
-		printf("%d doesnot exist in the array", num);
-	}
-	else
-	{
-		printf("%d is located at %d index of the array", num, index);
-	}
+        printf("\n\nInput the number to be searched: ");
+        scanf("%d", &num);
+
+        int index = binary_search(arr, 0, n - 1, num);
+
+        if (index == -1) // number doesnot exist
+        {
+            printf("\n%d not found", num);
+        }
+        else
+        {
+            printf("\n%d is located at %d index", num, index);
+        }
+
+        printf("\n");
+    }
 }
 
-/*
-	Here j = i means I'm assigning the smallest number available in 
-	the array to min variable and the index of that number in  index
-	variable then swapping theses number . Here j = i is important 
-	thing.
-*/
-void sort_arr(int *ptr, int n)
+void merge_sort(int arr[], int l, int r)
 {
-	for (int i = 0; i < n; i++)
-	{
-		int min = ptr[i], index = i;
-		for (int j = i; j  < n; j++)
-		{
-			if (min > ptr[j])
-			{
-				min = ptr[j];
-				index = j;
-			}
-		}
-		ptr[index] = ptr[i];
-		ptr[i] = min;
-	}
+    if (l < r)
+    {
+        int mid = l + (r - l) / 2;
+
+        merge_sort(arr, l, mid);// divide the first half
+        merge_sort(arr, mid + 1, r);// divide the second half 
+        merge(arr, mid,  l, r);// merge the two halfs
+    }
+}
+
+void merge(int arr[], int mid, int l, int r)
+{
+    int n1 = mid - l + 1;
+    int n2 = r - mid;
+
+    int L[n1], R[n2];
+
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[mid + j + 1];
+
+    int i = 0; 
+    int j = 0;
+    int k = l;
+
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
+            arr[k] = L[i];
+            i++;
+        }
+        else
+        {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) 
+    {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) 
+    {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
 }
 
 /*
@@ -73,7 +117,6 @@ void sort_arr(int *ptr, int n)
 	*if arr[mid] == number I'm searching, then return mid as index
 	*if arr[mid] > number , then end = mid - 1
 	*else means arr[mid] < number then start = mid + 1
-
 	example here's an array:
 	numbers: 0 | 9 | 10 | 31 | 35 |
 	indexes: 0 | 1 |  2 |  3 | 4  |
@@ -81,15 +124,12 @@ void sort_arr(int *ptr, int n)
 	here i'm searching 31
 	
 	first mid = start which is 0 + end which is 4 / 2 so mid = 2
-
 	arr[mid] != num;
 	arr[mid] !> num;
 	
 	arr[mid] < num 
 	so left = mid +1
-
 	so (3 + 4) / 2 = 3
-
 	so mid = 3 
 	arr[mid] == num
 	so I will return the mid as index
