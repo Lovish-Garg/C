@@ -1,91 +1,105 @@
+/*
+ This program of merge_Sort doesnot make use of two arrays
+ just like L for left Sub-array and R for R right sub-array
+ this just use a temp array of 'r' size and this program also 
+ doesnot need to copy elements of left subarray and right sub-
+ arrays then perform operation . This program directly use temp array
+ to store sorted version of actual array then copy it to the 
+ actual array named 'arr' in this case
+*/
 #include <stdio.h>
 
-void print_arr(int arr[], int n);
-void merge_sort(int arr[], int, int);
-void merge(int arr[], int, int l, int r);
+void print_arr(int [], int);
+void merge(int [], int, int, int);
+void merge_sort(int [], int, int);
 
 int main(void)
 {
-    int n;
+    int t;
 
-    printf("Input number of elements: ");
-    scanf("%d", &n);
+    printf("Testcases: ");
+    scanf("%d", &t);
 
-    int arr[n];
-
-    for (int i = 0; i < n; i++)
+    while (t--)
     {
-        scanf("%d", &arr[i]);
+        int n;
+
+        printf("Elements: ");
+        scanf("%d", &n);
+
+        int arr[n];
+
+        printf("\nInput data in array->\n");
+        for (int i = 0; i < n; ++i)
+            scanf("%d", &arr[i]);
+
+        printf("\nArray before sorting->\n");   
+        print_arr(arr, n);
+
+        merge_sort(arr, 0, n - 1);
+        
+        printf("\n\nArray after sorting->\n");   
+        print_arr(arr, n);
+
+        printf("\n\n");
     }
-
-    merge_sort(arr, 0, n - 1);
-
-    print_arr(arr, n);
 }
 
 void merge_sort(int arr[], int l, int r)
 {
+    
     if (l < r)
     {
-        int mid = l + (r - l) / 2;
+        int mid = l + (r - l)/ 2;
+        
+        merge_sort(arr, l, mid);
+        merge_sort(arr, mid + 1, r);
 
-        merge_sort(arr, l, mid);// divide the first half
-        merge_sort(arr, mid + 1, r);// divide the second half 
-        merge(arr, mid,  l, r);// merge the two halfs
+        merge(arr, l, mid, r);
     }
 }
 
-void merge(int arr[], int mid, int l, int r)
+void merge(int arr[], int l, int m, int r)
 {
-    int n1 = mid - l + 1;
-    int n2 = r - mid;
-
-    int L[n1], R[n2];
-
-    for (int i = 0; i < n1; i++)
-        L[i] = arr[l + i];
-
-    for (int j = 0; j < n2; j++)
-        R[j] = arr[mid + j + 1];
-
-    int i = 0; 
-    int j = 0;
     int k = l;
+    
+    /*
+        Well I tried with temp[r - l + 1] So that I would create only 
+        required space for variables but then in some test-cases
+        It showed me undefined behaviour because temp[r - l + 1] will create
+        only space for number of elements but in some cases when temp has storage of 
+        5 integers but k becomes greater than 5 , then it will act as bug
+    */
+    int temp[r];
 
-    while (i < n1 && j < n2)
+    int first = l;
+    int second = m + 1;
+
+    printf("Hello");
+    while (first <= m && second <= r)
     {
-        if (L[i] <= R[j])
-        {
-            arr[k] = L[i];
-            i++;
-        }
+
+        if (arr[first] <= arr[second])
+            temp[k++] = arr[first++];
+        
         else
-        {
-            arr[k] = R[j];
-            j++;
-        }
-        k++;
+            temp[k++] = arr[second++];
+            
     }
 
-    while (i < n1) 
-    {
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
+    while (first <= m)
+        temp[k++] = arr[first++];
 
-    while (j < n2) 
-    {
-        arr[k] = R[j];
-        j++;
-        k++;
-    }
+    while (second <= r)// 8 1 0 2 0 7 99 0 1
+        temp[k++] = arr[second++];
+
+    for (int i = l; i <= r; ++i)
+        arr[i] = temp[i];
+
 }
 
 void print_arr(int arr[], int n)
 {
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", arr[i]);
-    }
+	for (int i = 0; i < n; i++)
+		printf("%d ", arr[i]);
 }
