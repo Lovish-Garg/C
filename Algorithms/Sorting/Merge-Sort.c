@@ -52,10 +52,10 @@ void merge_sort(int arr[], int l, int r)
     {
         int mid = l + (r - l)/ 2;
         
-        merge_sort(arr, l, mid);
-        merge_sort(arr, mid + 1, r);
+        merge_sort(arr, l, mid);// divide array as left sub-arr
+        merge_sort(arr, mid + 1, r);// divide array as right sub-arr
 
-        merge(arr, l, mid, r);
+        merge(arr, l, mid, r);// merge left and right sub-arr
     }
 }
 
@@ -72,11 +72,10 @@ void merge(int arr[], int l, int m, int r)
     */
     int temp[r];
 
-    int first = l;
-    int second = m + 1;
+    int first = l;// first for first sub-arr and to get the elements of first sub-arr
+    int second = m + 1;// second for second sub-arr and to get the elements of second sub-arr 
 
-    printf("Hello");
-    while (first <= m && second <= r)
+    while (first <= m && second <= r)// while (first is in limits of first sub-arr && second in limit of size of whole array)
     {
 
         if (arr[first] <= arr[second])
@@ -87,10 +86,11 @@ void merge(int arr[], int l, int m, int r)
             
     }
 
+    // to copy the remained elements if remained any
     while (first <= m)
         temp[k++] = arr[first++];
 
-    while (second <= r)// 8 1 0 2 0 7 99 0 1
+    while (second <= r)
         temp[k++] = arr[second++];
 
     for (int i = l; i <= r; ++i)
